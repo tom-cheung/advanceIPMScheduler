@@ -12,6 +12,20 @@ namespace :sample_tasks do
         end
     end
 
+    task :import_work_orders => :environment do 
+        CSV.foreach(Rails.root.join('lib/assets/work_orders.csv'), headers: true) do |row|
+
+            technician_id = row[1];
+            location_id = row[2];
+            time = row[3]
+            duration = row[4]
+            price = row[5]
+            
+            puts technician_id + " " + location_id + " " + time + " " + duration + " " + price
+            puts "---"
+        end
+    end
+
     
     
 end
